@@ -1,0 +1,32 @@
+{
+  "name": "fruitzy",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Fruitzy monorepo (Expo + Firebase)",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "dev:frontend": "npm run start --workspace apps/frontend",
+    "dev:backend": "npm run dev --workspace apps/backend",
+    "lint": "npm run lint --workspaces",
+    "format": "prettier --check .",
+    "format:write": "prettier --write ."
+  },
+  "workspaces": [
+    "apps/frontend",
+    "apps/backend",
+    "packages/*"
+  ],
+  "keywords": [
+    "expo",
+    "firebase",
+    "nativewind",
+    "react-native"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
+}
