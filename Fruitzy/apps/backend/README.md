@@ -36,17 +36,6 @@ Firebase Cloud Functions and Firestore backend for the Fruitzy shopping app.
 - `npm run dev` - Watch mode for development
 - `npm run serve` - Start Firebase emulators locally
 - `npm run deploy` - Deploy functions to Firebase
-- `npm run seed` - Seed Firestore with product data
-
-## Seeding Products
-
-To populate Firestore with the 10 products from `firebasedata.md`:
-
-```bash
-npm run seed
-```
-
-This will add all products to the `products` collection in Firestore.
 
 ## Local Development
 
@@ -77,8 +66,7 @@ FIREBASE_PRIVATE_KEY=your-private-key
 ```
 apps/backend/
 ├── src/
-│   ├── index.ts          # Cloud Functions entry point
-│   └── seed-products.ts  # Firestore seeding script
+│   └── index.ts          # Cloud Functions entry point
 ├── lib/                  # Compiled JavaScript (gitignored)
 ├── firebase.json         # Firebase configuration
 ├── firestore.rules       # Firestore security rules

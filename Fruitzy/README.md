@@ -14,12 +14,29 @@ We follow **Rule 1**: build and verify one component/feature at a time.
 
 # Features
 
-- Home screen with priority products, search bar, and ad carousel
-- Small “refresh” button under Popular to reset stock to original
-- Out‑of‑stock UX: disabled add, slight gray, tiny label under name
-- Cart with quantity controls, remove items, total, and checkout navigation
-- Authentication with email/password and Google sign‑in; guest greeting
--
+✨ **Shopping Experience**
+- 🏠 **Smart Home Screen** - Priority products with high-quality images, intelligent lazy loading, and smooth ad carousel
+- 🔍 **Powerful Search** - Real-time product search with filter options and recent search history
+- 🛒 **Smart Cart** - Quantity controls, item management, and seamless checkout flow
+- 📦 **Product Details** - Rich product pages with descriptions, stock alerts, and favorite functionality
+
+🎨 **User Experience**
+- 🌓 **Dark/Light Mode** - Beautiful theme switching with consistent typography and colors
+- 👤 **User Profile** - Quick access menu with user info, theme toggle, and logout
+- 🎯 **Guest Mode** - Continue shopping without login, full app access for everyone
+- ⚡ **Performance** - Optimized images, lazy loading, and smooth animations
+
+🔐 **Authentication**
+- 📧 **Email/Password** - Secure email authentication with Clerk integration
+- 🔵 **Google Sign-In** - One-tap Google authentication (fully functional)
+- 🍎 **Apple Sign-In** - Ready for Apple authentication (dummy implementation)
+- 🚪 **Smart Logout** - Easy logout from profile menu with session management
+
+📱 **UI/UX Highlights**
+- 🎨 **Figma-Accurate Design** - Pixel-perfect implementation matching design specifications
+- 📐 **Responsive Layout** - Optimized for all screen sizes and devices
+- 🎭 **Toast Notifications** - Subtle, non-intrusive feedback messages
+- 🏷️ **Stock Management** - Real-time inventory tracking with out-of-stock indicators
 
 ## Structure
 
@@ -65,7 +82,7 @@ Each workspace exposes additional scripts documented in its own README once crea
 - Frontend reads config from Expo `extra` via environment variables set in `apps/frontend/app.config.js` (apps/frontend/app.config.js:25).
 - Firebase is initialized in `apps/frontend/src/services/firebase.ts` (apps/frontend/src/services/firebase.ts:6) using these values.
 - Example variables: `FIREBASE_API_KEY`, `FIREBASE_AUTH_DOMAIN`, `FIREBASE_PROJECT_ID`, `FIREBASE_STORAGE_BUCKET`, `FIREBASE_MESSAGING_SENDER_ID`, `FIREBASE_APP_ID`, `FIREBASE_MEASUREMENT_ID`.
-- Backend scripts load `.env` using `dotenv` in `apps/backend/src/seed-products.ts` (apps/backend/src/seed-products.ts:4).
+- Backend scripts can load `.env` using `dotenv` if needed.
 
 ## Assumptions & Limitations
 
@@ -85,7 +102,7 @@ Each workspace exposes additional scripts documented in its own README once crea
 ## Firestore Data Structure
 
 - Collections are standardized via `COLLECTIONS` in `@fruitzy/config` (packages/config/src/firebase-config.ts:64).
-- Product fields include `id`, `name`, `description`, `price`, `imageUrl`, `stock` as shown in the backend seed script (apps/backend/src/seed-products.ts:11).
+- Product fields include `id`, `name`, `description`, `price`, `imageUrl`, `stock` as stored in Firestore.
 - Frontend product fetching and image resolution are handled in `productService.ts` (apps/frontend/src/services/productService.ts:1).
 
 ## Inventory Updates
@@ -100,8 +117,39 @@ Each workspace exposes additional scripts documented in its own README once crea
 3. Run relevant workspace scripts/tests.
 4. Share for review/testing before continuing.
 
+## Building APK for Distribution
+
+To build an APK for review or distribution:
+
+1. **Install EAS CLI** (if not already installed):
+   ```bash
+   npm install -g eas-cli
+   ```
+
+2. **Login to Expo**:
+   ```bash
+   cd apps/frontend
+   eas login
+   ```
+
+3. **Build APK**:
+   ```bash
+   eas build --platform android --profile preview
+   ```
+
+4. **Download and Share**: Once build completes, download the APK and share via Google Drive, WeTransfer, or GitHub Release.
+
+📖 **Detailed Guide**: See [BUILD_APK_GUIDE.md](apps/frontend/BUILD_APK_GUIDE.md) for complete instructions.
+
+📲 **Installation Instructions**: Share [APK_INSTALLATION_INSTRUCTIONS.md](APK_INSTALLATION_INSTRUCTIONS.md) with reviewers.
+
 ## Upcoming Features
 
 - Expo + NativeWind bootstrap with theme toggle.
 - Firebase Functions scaffold with Firestore seed utilities referencing `firebasedata.md`.
 - Shared config package for consistent Firebase initialization.
+
+
+
+eas build --platform android --profile production
+
